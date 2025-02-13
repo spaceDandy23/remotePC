@@ -1,0 +1,44 @@
+built in generator 
+- php artisan list
+
+
+create view template
+php artisan help make:view
+php artisan make:view *file name*
+
+can also create folders which may contain files 
+use . or /
+
+
+controller - methods that run when we assign to a route
+
+php artisan make: controller *file name*
+
+Route::get('/dashboard', ['App\Http\Controllers\UserController', 'dashboard']);
+✅ Using ::class prevents hardcoding the namespace.
+
+call_user_func([MyClass::class, 'sayHello']);
+
+
+Laravel automatically instantiates controllers 
+
+
+<?= ?> no use {{}}
+
+
+
+Components, reusable chunks of code
+
+anonymous component with view flag
+ex. php artisan make: component layout --view
+creates a folder
+
+
+to make use of the component use 
+<x-layout>
+
+
+</x-layout>
+
+
+layout file has {{slot}}

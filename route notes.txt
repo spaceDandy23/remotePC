@@ -1,0 +1,32 @@
+Let's say we have this route:
+php
+
+$route = "/user/{id}";
+$path = "/user/42"; // Incoming request
+Step 1: Convert {id} to Regex
+php
+
+$pattern = preg_replace("#\{\w+\}#", "([^\/]+)", $route);
+{id} is replaced with ([^/]+).
+Final $pattern:
+php
+
+^/user/([^/]+)$
+^ → Start of the string.
+/user/ → Fixed part of the URL.
+([^/]+) → Captures any characters except /.
+$ → End of the string.
+Step 2: preg_match() Execution
+php
+
+if (preg_match("#^/user/([^/]+)$#", "/user/42", $matches)) {
+🔍 What happens here?
+
+The function checks if /user/42 matches the pattern ^/user/([^/]+)$.
+✅ Match Found! $matches now contains:
+
+php
+
+$matches = [ "/user/42", "42" ];
+$matches[0] → The entire matched string ("/user/42")
+$matches[1] → The captured value ("42" from ([^/]+))
